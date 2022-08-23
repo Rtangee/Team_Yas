@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.3.xsd
+						http://www.springframework.org/schema/util
+						http://www.springframework.org/schema/util/spring-util-4.3.xsd">		
+	
+	<!-- <context:annotation-config/> -->
+	<context:component-scan base-package="wiring.scan">
+		<context:include-filter type="assignable" expression="wiring.scan.Role"/>
+		<context:include-filter type="assignable" expression="wiring.scan.Song"/>
+		<context:include-filter type="assignable" expression="wiring.scan.Instrument"/>
+		<context:exclude-filter type="assignable" expression="wiring.scan.Student"/>
+	</context:component-scan>
+	
+	<!-- 
+	<bean id="piano" class="wiring.scan.Piano"/>
+	<bean id="guitar" class="wiring.scan.Guitar"/>
+	<bean id="drum" class="wiring.scan.Drum"/>	
+	
+	<bean id="hello" class="wiring.scan.Hello"/>
+	<bean id="bounce" class="wiring.scan.Bounce"/>
+	<bean id="singer" class="wiring.scan.Singer"/>
+	-->
+	
+	<!-- 
+	<bean id="student" class="wiring.scan.Student"/>
+	<bean id="teacher" class="wiring.scan.Teacher"/>
+	<bean id="company" class="wiring.scan.Company"/>
+	<bean id="hong" class="wiring.scan.Actor"/>
+	-->
+		
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+						http://www.springframework.org/schema/util
+						http://www.springframework.org/schema/util/spring-util-4.3.xsd">	
+
+	<util:list id="cities">
+		<bean class="wiring.spel.City" p:name="서울시" p:state="경기도" p:population="950"/>
+		<bean class="wiring.spel.City" p:name="수원시" p:state="경기도" p:population="400"/>
+		<bean class="wiring.spel.City" p:name="인천시" p:state="경기도" p:population="500"/>
+		<bean class="wiring.spel.City">
+			<property name="name" value="#{'안산시'}"/>
+			<property name="state" value="#{'경기도'}"/>
+			<property name="population" value="#{400}"/>		
+		</bean>
+	</util:list>							
+	
+	<bean id="prop" class="wiring.spel.Prop">
+		<!-- <property name="str" value="홍길동"/> -->
+		<!-- <property name="str" value="#{5}"/> -->
+		<!-- <property name="str" value="#{10.5}"/> -->
+		<!-- <property name="str" value="#{ABC}"/> error -->
+		<!-- <property name="str" value="#{'ABC'}"/> --> 
+		<!-- <property name="str" value='#{"ABC"}'/> -->
+		<!-- <property name="str" value="#{true}"/> -->
+		<!-- <property name="str" value="입력한 값은 #{10.5}"/> -->
+		
+		<!-- <property name="str" value="#{'5 + 2'}"/> -->
+		<!-- <property name="str" value="#{'5' + '2'}"/> -->
+		<!-- <property name="str" value="#{'5' + 2}"/> -->
+		<!-- <property name="str" value="#{5 + 2}"/> -->
+		
+		<!-- <property name="str" value="#{'5' - 2}"/> -->
+		<!-- <property name="str" value="#{'5' - '2'}"/> erro -->
+		
+		<!-- <property name="str" value="#{5 / 2}"/> -->
+		<!-- <property name="str" value="#{5 ^ 2}"/> -->
+		
+		<!-- <property name="str" value="#{5 > 2}"/> -->
+		<!-- <property name="str" value="#{5 gt 2}"/> -->
+		<!-- <property name="str" value="#{5 lt 2}"/> -->
+		<!-- <property name="str" value="#{5 ge 2}"/> -->
+		<!-- <property name="str" value="#{5 le 2}"/> -->
+		<!-- <property name="str" value="#{5 eq 2}"/> -->
+		<!-- <property name="str" value="#{5 ne 2}"/> -->
+		
+		<!-- <property name="str" value="#{true && false}"/> error -->
+		<!-- <property name="str" value="#{true and false}"/> -->
+		<!-- <property name="str" value="#{true or false}"/> -->
+		
+		<!-- <property name="str" value="#{5%2==0 ? '짝수' : '홀수'}"/> -->
+		
+		<!-- <property name="str" value="#{singer.getName()}"/> -->
+		<!-- <property name="str" value="#{singer.name}"/> -->
+		<!-- prop.setStr( singer.getName() ) -->
+		
+		<!-- <property name="str" value="#{r.nextInt( 45 ) + 1}"/> -->
+		<!-- <property name="str" value="#{date.toString()}"/> -->
+		
+		<!-- <property name="str" value="#{T(java.lang.Math).PI}"/> -->
+		<!-- Math.PI   static 클래스명.멤버 -->
+		<!-- <property name="str" value="#{T(java.lang.Math).random()}"/> -->
+		
+		<!-- null-safe -->
+		<!-- <property name="str" value="#{singer.name?.toString()}"/> -->
+		
+		<!-- Elvis  null-check -->		
+		<!-- <property name="str" value="#{singer.name != null ? '홍길동' : '이순신'}"/> -->
+		<!-- <property name="str" value="#{ singer.name ?: '이순신'}"/> -->
+		<!-- 값이 있으면 그 값을 넣고 값이 없으면 '이순신'을 넣어라 -->
+		
+		<!-- <property name="str" value="#{cities[0].name}"/> -->
+		<property name="str" value="#{cities[1].population}"/>
+		
+		
+	</bean>	
+	<bean id="r" class="java.util.Random"/>
+	<bean id="date" class="java.util.Date"/>
+	
+	<bean id="singer" class="wiring.spel.Singer">
+		<property name="name" value="홍길동"/>
+	</bean>
+			
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

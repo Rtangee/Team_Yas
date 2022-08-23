@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.3.xsd
+						http://www.springframework.org/schema/util
+						http://www.springframework.org/schema/util/spring-util-4.3.xsd">		
+	
+	<context:annotation-config/>
+	
+	<util:list id="names">
+		<value>홍길동</value>
+		<value>이순신</value>
+		<value>김유신</value>
+	</util:list>
+	
+	<util:list id="instruments">
+		<ref bean="piano"/>
+		<ref bean="guitar"/>
+		<ref bean="drum"/>
+	</util:list>
+	
+	<util:map id="songs">
+		<entry key="Hello" value-ref="hello"/>
+		<entry key="Bounce" value-ref="bounce"/>
+	</util:map>
+	
+	
+	<util:list id="ss">
+		<ref bean="hello"/>
+		<ref bean="bounce"/>
+	</util:list>
+	<util:map id="ins">
+		<entry key="PIANO" value-ref="piano"/>
+		<entry key="guitar" value-ref="guitar"/>
+		<entry key="drum" value-ref="drum"/>
+	</util:map>
+	
+	<bean id="piano" class="wiring.anno.Piano"/>
+	<bean id="guitar" class="wiring.anno.Guitar"/>
+	<bean id="drum" class="wiring.anno.Drum"/>
+	
+	<bean id="hong" class="wiring.anno.Instrumentalist"/>
+	
+	<bean id="hello" class="wiring.anno.Hello"/>
+	<bean id="bounce" class="wiring.anno.Bounce"/>
+	<bean id="singer" class="wiring.anno.Singer"/>
+	
+	<bean id="kim" class="wiring.anno.TwoManBand"/>
+		
+		
+		
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

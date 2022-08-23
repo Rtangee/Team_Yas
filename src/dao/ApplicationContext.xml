@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.3.xsd
+						http://www.springframework.org/schema/util
+						http://www.springframework.org/schema/util/spring-util-4.3.xsd">		
+	
+	<!-- JDBC 드라이버 기반 DataSource -->
+	<!-- 
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="bit"/>
+		<property name="password" value="bit"/>
+	</bean>
+	-->
+	
+	<!-- 컨텍션 풀 DataSource -->
+	<!-- 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="bit"/>
+		<property name="password" value="bit"/>
+		<property name="initialSize" value="10"/>
+		<property name="maxActive" value="10"/>
+		<property name="maxWait" value="3"/>
+	</bean>
+	-->
+		
+	<!--
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource"/>
+	</bean>
+	<bean id="userDao" class="dao.JdbcUserDao">
+		<property name="template" ref="jdbcTemplate"/>
+	</bean>
+	-->
+	
+	<!-- 
+	<bean id="userDao" class="dao.JdbcUserDao">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	-->
+	
+	<context:component-scan base-package="dao"/>
+	
+	
+		
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

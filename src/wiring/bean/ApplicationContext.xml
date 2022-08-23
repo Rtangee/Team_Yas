@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">		
+	
+	
+	<!-- DI -->
+	<bean id="lee" class="wiring.bean.Juggler"/>
+	
+	<!-- 생성자 Wiring -->
+	<bean id="park" class="wiring.bean.Juggler">
+		<constructor-arg value="5"/>
+	</bean>
+	
+	<bean id="flower" class="wiring.bean.Flower"/>
+	<bean id="picnic" class="wiring.bean.Picnic"/>
+	<!-- 
+	<bean id="hong" class="wiring.bean.PoeticJuggler">
+		<constructor-arg value="7"/>
+		<constructor-arg ref="picnic"/>
+	</bean>
+	-->
+	
+	<!-- 팩토리 메서드 -->
+	<bean id="stage" class="wiring.bean.Stage" factory-method="getInstance"/>
+	
+	<!-- singleton / prototype -->
+	<bean id="ticket" class="wiring.bean.Ticket" scope="prototype"/>
+	
+	<!-- 빈 초기화 정리 -->
+	<bean id="auditorium" class="wiring.bean.Auditorium" 
+		init-method="turnOn" destroy-method="turnOff"/>
+	
+	<!-- 프로퍼티 주입 -->
+	<bean id="guitar" class="wiring.bean.Guitar"/>
+	<bean id="piano" class="wiring.bean.Piano"/>
+	<bean id="drum" class="wiring.bean.Drum"/>
+	<!-- 
+	<bean id="hong" class="wiring.bean.Instrumentalist">
+		<property name="song" value="Hello"/>
+		<property name="instrument">
+			<bean class="wiring.bean.Piano"/>
+		</property>
+	</bean>
+	-->	
+	<!-- 
+		Piano piano = new Piano();
+		Instrumentalist hong = new Instrumentalist();
+		hong.setSong( "Hello" );
+		hong.setInstrument( piano );
+		
+		hong.setInstrument( new Piano() );
+	-->
+	
+	<!-- P 네임스페이스 -->
+	<!-- 
+	<bean id="hong" class="wiring.bean.Instrumentalist"
+		p:song="Hello" p:instrument-ref="guitar"/>
+	-->
+	
+	<!-- 컬렉션 와이어링 -->
+	<!-- 
+	<bean id="hong" class="wiring.bean.OneManBand">
+		<property name="instruments">
+			<set>
+				<ref bean="piano"/>
+				<ref bean="guitar"/>
+				<ref bean="drum"/>
+				<ref bean="guitar"/>				
+			</set>
+		</property>
+	</bean>
+	-->
+	
+	<bean id="hong" class="wiring.bean.TwoManBand">
+		<property name="instruments">
+			<map>
+				<entry key="PIANO" value-ref="piano"/>
+				<entry key="GUITAR" value-ref="guitar"/>
+				<entry key="DRUM" value-ref="drum"/>
+			</map>
+		</property>
+	</bean>
+	
+		
+		
+	
+	<!-- 연습용 -->
+	<bean id="hello" class="wiring.bean.Hello"/>
+	<bean id="bounce" class="wiring.bean.Bounce"/>
+	<bean id="singer" class="wiring.bean.Singer">
+		<property name="name" value="조용필"/>
+		<property name="songs">
+			<list>
+				<ref bean="hello"/>
+				<ref bean="bounce"/>
+			</list>
+		</property>
+		<property name="instruments">
+			<map>
+				<entry key="DRUM" value-ref="drum"/>
+				<entry key="PIANO" value-ref="piano"/>
+				<entry key="GUITAR" value-ref="guitar"/>
+			</map>
+		</property>
+	</bean>
+		
+	
+		
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
